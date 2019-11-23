@@ -16,13 +16,7 @@ public:
 
     ~Element();
 
-    void set_element(Node *);
-
-    Node *get_element();
-
-    void set_next(Element *);
-
-    Element *get_next();
+    friend class Queue;
 };
 
 

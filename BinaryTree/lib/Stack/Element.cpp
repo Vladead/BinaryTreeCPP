@@ -4,7 +4,7 @@
 
 #include "Element.h"
 
-Element::Element() : value(), next(nullptr) {
+Element::Element() : element(nullptr), next(nullptr) {
 
 }
 

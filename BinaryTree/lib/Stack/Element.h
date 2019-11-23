@@ -9,7 +9,7 @@
 
 class Element {
 private:
-    Node *value;
+    Node *element;
     Element *next;
 
 public:

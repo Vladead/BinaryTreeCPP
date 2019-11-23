@@ -3,3 +3,7 @@
 //
 
 #include "Element.h"
+
+Element::Element() : element(nullptr), next(nullptr) {}
+
+Element::~Element() = default;

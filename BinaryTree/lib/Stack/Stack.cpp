@@ -24,7 +24,7 @@ void Stack::push(Node *value) {
         } else {
             top = temp;
         }
-        top->value = value;
+        top->element = value;
     }
     catch (const std::bad_alloc &) {
         std::cerr << "Something bad happened with memory allocation " << std::endl;
@@ -39,7 +39,7 @@ Node *Stack::pop() {
 
     auto current = top->next;
     Node *tempValue;
-    tempValue = top->value;
+    tempValue = top->element;
     delete top;
     top = current;
     return tempValue;
@@ -49,7 +49,7 @@ Node *Stack::peek() {
     if (get_size() == 0) {
         throw std::runtime_error("There is nothing to show");
     }
-    return top->value;
+    return top->element;
 }
 
 size_t Stack::get_size() noexcept {

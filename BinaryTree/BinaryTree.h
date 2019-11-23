@@ -23,9 +23,9 @@ public:
 
     void remove(int key);              // Deleting element in tree by key
 
-    Iterator create_dft_iterator();    // Create iterator for depth-first traverse
+    Iterator* create_dft_iterator();    // Create iterator for depth-first traverse
 
-    Iterator create_bft_iterator();    // Create iterator for breadth-first traverse
+    Iterator* create_bft_iterator();    // Create iterator for breadth-first traverse
 
     void print();                      // Print tree to console
 

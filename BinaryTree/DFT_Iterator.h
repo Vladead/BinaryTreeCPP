@@ -14,7 +14,7 @@ private:
     Node *current;
     Stack stackForTraverse;
 public:
-    DFT_Iterator(Node *root);
+    explicit DFT_Iterator(Node *root);
 
     ~DFT_Iterator();
 

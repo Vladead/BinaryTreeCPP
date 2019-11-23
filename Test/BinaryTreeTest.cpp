@@ -3,7 +3,7 @@
 //
 
 #include <gtest/gtest.h>
-#include "../BinaryTreeLib/BinaryTree.h"
+#include "../BinaryTree/BinaryTree.h"
 
 class BinaryIntTest : public ::testing::Test {
 

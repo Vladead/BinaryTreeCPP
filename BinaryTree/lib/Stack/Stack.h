@@ -19,9 +19,9 @@ public:
 
     void push(Node *value);          // Add element to stack
 
-    Node *pop();                     // Delete element from stack. Return value from deleted element
+    Node *pop();                     // Delete element from stack. Return element from deleted element
 
-    Node *peek();                    // Return value from top of stack
+    Node *peek();                    // Return element from top of stack
 
     size_t get_size() noexcept;  // Return count of elements in stack
 
