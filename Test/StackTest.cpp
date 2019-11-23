@@ -5,3 +5,10 @@
 #include <gtest/gtest.h>
 #include "../BinaryTree/lib/Stack/Stack.h"
 
+class StackTest : public ::testing::Test {
+
+protected:
+    void SetUp() override {
+
+    }
+};

@@ -15,14 +15,6 @@ DFT_Iterator::~DFT_Iterator() {
     stackForTraverse.clear();
 }
 
-void DFT_Iterator::traverse(Node *root) {
-    if (root) {
-        stackForTraverse.push(root);
-        traverse(root->get_left());
-        traverse(root->get_right());
-    }
-}
-
 Node *DFT_Iterator::next() {
     if (current == nullptr) {
         throw std::out_of_range("Next element does not exist");
@@ -33,5 +25,13 @@ Node *DFT_Iterator::next() {
 }
 
 bool DFT_Iterator::has_next() {
-    return stackForTraverse.get_size() != 0;
+    return (stackForTraverse.get_size() != 0);
+}
+
+void DFT_Iterator::traverse(Node *root) {
+    if (root) {
+        stackForTraverse.push(root);
+        traverse(root->get_left());
+        traverse(root->get_right());
+    }
 }

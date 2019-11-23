@@ -7,14 +7,16 @@
 
 #include "Iterator.h"
 #include "Node.h"
+#include "Queue.h"
 
 class BFT_Iterator : public Iterator {
 private:
     Node *current;
+    Queue queueForTraverse;
 public:
-    BFT_Iterator(Node &root);
+    explicit BFT_Iterator(Node *root);
 
-    ~BFT_Iterator();
+    ~BFT_Iterator() override;
 
     Node* next() override;
 
