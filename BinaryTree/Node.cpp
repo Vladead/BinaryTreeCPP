@@ -19,3 +19,7 @@ Node* Node::get_left() {
 Node* Node::get_right() {
     return right;
 }
+
+int Node::get_data() {
+    return data;
+}

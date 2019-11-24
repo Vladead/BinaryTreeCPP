@@ -61,3 +61,29 @@ TEST_F(BinaryIntTest, removeTest) {
     treeForTest.remove(28);
     ASSERT_EQ(false, treeForTest.contains(28));
 }
+
+TEST_F(BinaryIntTest, create_bft_iteratorTest) {
+    treeForTest.~BinaryTree();
+    treeForTest.insert(4);
+    treeForTest.insert(3);
+    treeForTest.insert(5);
+    auto iterator = treeForTest.create_bft_iterator();
+
+    ASSERT_EQ(3, iterator->next()->get_data());
+    ASSERT_EQ(5, iterator->next()->get_data());
+    ASSERT_EQ(4, iterator->next()->get_data());
+}
+
+TEST_F(BinaryIntTest, create_dft_iteratorTest) {
+    treeForTest.~BinaryTree();
+    treeForTest.insert(4);
+    treeForTest.insert(3);
+    treeForTest.insert(5);
+    treeForTest.insert(6);
+    auto iterator = treeForTest.create_bft_iterator();
+
+    ASSERT_EQ(3, iterator->next()->get_data());
+    ASSERT_EQ(6, iterator->next()->get_data());
+    ASSERT_EQ(5, iterator->next()->get_data());
+    ASSERT_EQ(4, iterator->next()->get_data());
+}

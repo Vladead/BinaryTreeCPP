@@ -175,7 +175,7 @@ void BinaryTree::printNode(Node *node, int level, bool side) {
     if (level != 0) {
         std::cout << '|';
         std::cout << "->";
-        if (side == false) {
+        if (!side) {
             std::cout << "L: ";
         } else {
             std::cout << "R: ";

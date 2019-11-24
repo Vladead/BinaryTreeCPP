@@ -39,7 +39,7 @@ private:
 
     Node *next(Node *node);    // Find next minimum element in the tree
 
-    static void printNode(Node *node, int level, bool side);
+    static void printNode(Node *node, int level, bool side);    // Help function for the print
 };
 
 

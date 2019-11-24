@@ -16,7 +16,7 @@ private:
 public:
     explicit BFT_Iterator(Node *root);
 
-    ~BFT_Iterator();
+    ~BFT_Iterator() override;
 
     Node* next() override;    // Return element after current
 

@@ -22,6 +22,8 @@ public:
 
     Node *get_right();
 
+    int get_data();
+
     friend class BinaryTree;
 };
 
