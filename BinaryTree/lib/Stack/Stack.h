@@ -11,6 +11,7 @@
 
 class Stack {
 private:
+    size_t size;
     Element *top;
 public:
     Stack();

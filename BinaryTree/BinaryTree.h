@@ -11,7 +11,6 @@
 class BinaryTree {
 private:
     Node *root;
-    int height;
 public:
     BinaryTree();
 
@@ -29,7 +28,7 @@ public:
 
     void print();                      // Print tree to console
 
-    void destroy(Node *root);
+    static void destroy(Node *root);
 };
 
 

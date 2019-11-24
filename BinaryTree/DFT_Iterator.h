@@ -18,11 +18,11 @@ public:
 
     ~DFT_Iterator() override;
 
-    Node* next() override;
+    Node* next() override;    // Return element after current
 
-    bool has_next() override;
+    bool has_next() override;    // Check for the existing of the next element
 
-    void traverse(Node *) override;
+    void traverse(Node *root) override;    // Load all elements in tree into the stack
 };
 
 

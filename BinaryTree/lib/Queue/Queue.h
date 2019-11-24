@@ -24,7 +24,7 @@ public:
 
     Node *peek();    // Return element from the beginning of the queue
 
-    size_t get_size();    // Return size of the queue
+    size_t get_size() noexcept;    // Return size of the queue
 
     void clear() noexcept;    // Delete all elements in queue
 };

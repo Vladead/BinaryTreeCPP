@@ -6,7 +6,7 @@
 #include <stdexcept>
 #include "Stack.h"
 
-Stack::Stack() : top(nullptr) {
+Stack::Stack() : size(0), top(nullptr) {
 
 }
 
@@ -25,6 +25,7 @@ void Stack::push(Node *value) {
             top = temp;
         }
         top->element = value;
+        size++;
     }
     catch (const std::bad_alloc &) {
         std::cerr << "Something bad happened with memory allocation " << std::endl;
@@ -42,6 +43,7 @@ Node *Stack::pop() {
     tempValue = top->element;
     delete top;
     top = current;
+    size--;
     return tempValue;
 }
 

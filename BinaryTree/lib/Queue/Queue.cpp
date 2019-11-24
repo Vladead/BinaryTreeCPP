@@ -12,7 +12,6 @@ Queue::Queue() : first(nullptr), last(nullptr), size(0){}
 Queue::~Queue() = default;
 
 void Queue::enqueue(Node *element) {
-    size++;
     try {
         auto temp = new Element;
 
@@ -24,6 +23,7 @@ void Queue::enqueue(Node *element) {
             first = temp;
         }
         last->element = element;
+        size++;
     }
     catch (const std::bad_alloc &) {
         std::cerr << "Something bad happened with memory allocation " << std::endl;
@@ -41,6 +41,7 @@ Node *Queue::dequeue() {
     tempValue = first->element;
     delete first;
     first = current;
+    size--;
     return tempValue;
 }
 
@@ -51,7 +52,7 @@ Node *Queue::peek() {
     return first->element;
 }
 
-size_t Queue::get_size() {
+size_t Queue::get_size() noexcept {
     return size;
 }
 
