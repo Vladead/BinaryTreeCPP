@@ -3,6 +3,7 @@
 //
 
 #include <stdexcept>
+#include <iostream>
 #include "BinaryTree.h"
 #include "BFT_Iterator.h"
 #include "DFT_Iterator.h"
@@ -159,7 +160,47 @@ Iterator *BinaryTree::create_dft_iterator() {
 }
 
 void BinaryTree::print() {
+    if (root == nullptr) {
+        throw std::out_of_range("The tree is empty");
+    }
+    int level = 0;
+    printNode(root, level, false);
+    std::cout << std::endl;
+}
 
+void BinaryTree::printNode(Node *node, int level, bool side) {
+    for (int i = 0; i < level; i++) {
+        std::cout << ' ';
+    }
+    if (level != 0) {
+        std::cout << '|';
+        std::cout << "->";
+        if (side == false) {
+            std::cout << "L: ";
+        } else {
+            std::cout << "R: ";
+        }
+    } else {
+        std::cout << ' ';
+    }
+    if (node) {
+        std::cout << node->data << std::endl;
+    } else {
+        std::cout << '-' << std::endl;
+    }
+    if (node) {
+        if (level > 0) {
+            if (node->get_left() || node->get_right()) {
+                printNode(node->get_left(), level + 3, false);
+                printNode(node->get_right(),level + 3, true);
+            }
+        } else {
+            if (node->get_left() || node->get_right()) {
+                printNode(node->get_left(), level + 1, false);
+                printNode(node->get_right(), level + 1, true);
+            }
+        }
+    }
 }
 
 void BinaryTree::destroy(Node *node) {

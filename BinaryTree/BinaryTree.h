@@ -33,11 +33,13 @@ private:
 
     static void destroy(Node *node);    // Delete tree, except root
 
-    Node *findParent(Node *node);
+    Node *findParent(Node *node);    // Find parent of the node
 
-    static Node *minimum(Node *node);
+    static Node *minimum(Node *node);   // Find minimum element in the tree
 
-    Node *next(Node *node);
+    Node *next(Node *node);    // Find next minimum element in the tree
+
+    static void printNode(Node *node, int level, bool side);
 };
 
 
