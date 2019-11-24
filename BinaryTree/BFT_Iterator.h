@@ -7,16 +7,16 @@
 
 #include "Iterator.h"
 #include "Node.h"
-#include "Queue.h"
+#include "Stack.h"
 
 class BFT_Iterator : public Iterator {
 private:
     Node *current;
-    Queue queueForTraverse;
+    Stack stackForTraverse;
 public:
     explicit BFT_Iterator(Node *root);
 
-    ~BFT_Iterator() override;
+    ~BFT_Iterator();
 
     Node* next() override;    // Return element after current
 

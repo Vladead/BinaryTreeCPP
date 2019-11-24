@@ -7,4 +7,4 @@ set(SOURCE main.cpp)
 add_executable(MainApp ${SOURCE})
 
 include_directories(../BinaryTree)
-target_link_libraries(MainApp BinaryTreeLib)
+target_link_libraries(MainApp BinaryTree)

@@ -16,7 +16,7 @@ Stack::~Stack() {
 
 void Stack::push(Node *value) {
     try {
-        auto temp = new Element;
+        auto temp = new SElement;
 
         if (top != nullptr) {
             temp->next = top;
@@ -72,7 +72,7 @@ size_t Stack::get_size() noexcept {
 
 void Stack::clear() noexcept {
     if (get_size() != 0) {
-        Element *temp;
+        SElement *temp;
 
         while (top) {
             temp = top->next;

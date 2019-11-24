@@ -6,13 +6,13 @@
 #define PROGRAM2_STACK_H
 
 #include <cstddef>
-#include "Element.h"
-#include "../../Node.h"
+#include "SElement.h"
+#include "Node.h"
 
 class Stack {
 private:
     size_t size;
-    Element *top;
+    SElement *top;
 public:
     Stack();
 

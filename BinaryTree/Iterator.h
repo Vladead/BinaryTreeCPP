@@ -9,7 +9,7 @@
 
 class Iterator {
 public:
-    virtual ~Iterator() = 0;
+    virtual ~Iterator() = default;
 
     virtual Node *next() = 0;
 

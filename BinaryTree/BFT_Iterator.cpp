@@ -4,6 +4,7 @@
 
 #include <stdexcept>
 #include "BFT_Iterator.h"
+#include "Stack.h"
 
 BFT_Iterator::BFT_Iterator(Node *root) {
     current = root;
@@ -11,34 +12,34 @@ BFT_Iterator::BFT_Iterator(Node *root) {
 }
 
 BFT_Iterator::~BFT_Iterator() {
-    queueForTraverse.clear();
+    stackForTraverse.clear();
 }
 
 Node *BFT_Iterator::next() {
     if (current == nullptr) {
         throw std::out_of_range("Next element does not exist");
     }
-    current = queueForTraverse.dequeue();
+    current = stackForTraverse.pop();
     Node *temp = current;
     return temp;
 }
 
 bool BFT_Iterator::has_next() {
-    return (queueForTraverse.get_size() != 0);
+    return (stackForTraverse.get_size() != 0);
 }
 
 void BFT_Iterator::traverse(Node *root) {
-    Queue temp;
+    Stack temp;
     Node* tempNode;
-    temp.enqueue(root);
+    temp.push(root);
     while (temp.get_size() != 0) {
-        tempNode = temp.dequeue();
-        queueForTraverse.enqueue(tempNode);
+        tempNode = temp.pop();
+        stackForTraverse.push(tempNode);
         if (tempNode->get_left()) {
-            temp.enqueue(tempNode->get_left());
+            temp.push(tempNode->get_left());
         }
         if (tempNode->get_right()) {
-            temp.enqueue(tempNode->get_right());
+            temp.push(tempNode->get_right());
         }
     }
 }

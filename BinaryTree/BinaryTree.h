@@ -29,6 +29,9 @@ public:
     void print();                      // Print tree to console
 
     static void destroy(Node *root);
+
+private:
+    static void addElement(Node* root, int key);
 };
 
 

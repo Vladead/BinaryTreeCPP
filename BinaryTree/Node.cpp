@@ -6,6 +6,10 @@
 
 Node::Node() : data(0), right(nullptr), left(nullptr) {}
 
+Node::Node(int data) : data(data), right(nullptr), left(nullptr) {
+
+}
+
 Node::~Node() = default;
 
 Node* Node::get_left() {

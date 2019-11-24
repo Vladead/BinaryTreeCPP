@@ -14,6 +14,8 @@ private:
 public:
     Node();
 
+    explicit Node(int data);
+
     ~Node();
 
     Node *get_left();

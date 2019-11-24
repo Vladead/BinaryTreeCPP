@@ -5,17 +5,17 @@
 #ifndef PROGRAM2_ELEMENT_H
 #define PROGRAM2_ELEMENT_H
 
-#include "../../Node.h"
+#include "Node.h"
 
-class Element {
+class SElement {
 private:
     Node *element;
-    Element *next;
+    SElement *next;
 
 public:
-    Element();
+    SElement();
 
-    ~Element();
+    ~SElement();
 
     friend class Stack;
 };

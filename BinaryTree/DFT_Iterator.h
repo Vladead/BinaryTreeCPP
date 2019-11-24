@@ -16,7 +16,7 @@ private:
 public:
     explicit DFT_Iterator(Node *root);
 
-    ~DFT_Iterator() override;
+    ~DFT_Iterator();
 
     Node* next() override;    // Return element after current
 
