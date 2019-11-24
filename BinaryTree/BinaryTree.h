@@ -28,10 +28,16 @@ public:
 
     void print();                      // Print tree to console
 
-    static void destroy(Node *root);
-
 private:
-    static void addElement(Node* root, int key);
+    static void addElement(Node* node, int key);    // Help function for the insert
+
+    static void destroy(Node *node);    // Delete tree, except root
+
+    Node *findParent(Node *node);
+
+    static Node *minimum(Node *node);
+
+    Node *next(Node *node);
 };
 
 

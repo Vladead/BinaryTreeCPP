@@ -43,24 +43,111 @@ void BinaryTree::insert(int key) {
     }
 }
 
-void BinaryTree::addElement(Node *root, int key) {
-    if (root->data > key) {
-        if (root->left == nullptr) {
-            root->left = new Node(key);
+void BinaryTree::addElement(Node *node, int key) {
+    if (node->data > key) {
+        if (node->left == nullptr) {
+            node->left = new Node(key);
         } else {
-            addElement(root->left, key);
+            addElement(node->left, key);
         }
     } else {
-        if (root->right == nullptr) {
-            root->right = new Node(key);
+        if (node->right == nullptr) {
+            node->right = new Node(key);
         } else {
-            addElement(root->right, key);
+            addElement(node->right, key);
         }
     }
 }
 
 void BinaryTree::remove(int key) {
+    if (root == nullptr) {
+        throw std::out_of_range("The tree is empty");
+    }
 
+    if (!contains(key)) {
+        throw std::runtime_error("The key does not exist");
+    }
+
+    Iterator *iterator = create_dft_iterator();
+    Node *shouldBeDeleted = nullptr;
+    while (iterator->has_next()) {
+        shouldBeDeleted = iterator->next();
+        if (shouldBeDeleted->data == key) {
+            break;
+        }
+    }
+    Node *parentOfShouldBeDeleted = findParent(shouldBeDeleted);
+    if (shouldBeDeleted->right == nullptr && shouldBeDeleted->left == nullptr) {
+        if (parentOfShouldBeDeleted->right == shouldBeDeleted) {
+            parentOfShouldBeDeleted->right = nullptr;
+        }
+        if (parentOfShouldBeDeleted->left == nullptr) {
+            parentOfShouldBeDeleted->left = nullptr;
+        }
+        destroy(shouldBeDeleted);
+    } else if (shouldBeDeleted->left == nullptr || shouldBeDeleted->right == nullptr) {
+        if (shouldBeDeleted->left == nullptr) {
+            if (parentOfShouldBeDeleted->left == shouldBeDeleted) {
+                parentOfShouldBeDeleted->left = shouldBeDeleted->right;
+            } else {
+                parentOfShouldBeDeleted->right = shouldBeDeleted->right;
+            }
+        } else {
+            if (parentOfShouldBeDeleted->left == shouldBeDeleted) {
+                parentOfShouldBeDeleted->left = shouldBeDeleted->left;
+            } else {
+                parentOfShouldBeDeleted->right = shouldBeDeleted->left;
+            }
+        }
+    } else {
+        auto suitable = next(shouldBeDeleted);
+        shouldBeDeleted->data = suitable->data;
+        if (findParent(suitable)->left == suitable) {
+            findParent(suitable)->left = nullptr;
+            destroy(suitable);
+        } else {
+            findParent(suitable)->right = suitable->right;
+            suitable->right = nullptr;
+            destroy(suitable);
+        }
+    }
+    delete iterator;
+}
+
+Node *BinaryTree::minimum(Node *node) {
+    if (node->left == nullptr) {
+        return node;
+    }
+    return minimum(node->left);
+}
+
+Node *BinaryTree::next(Node *node) {
+    if (node->right != nullptr) {
+        return minimum(node->right);
+    }
+    auto temp = findParent(node);
+    while (temp != nullptr && node == temp->right) {
+        node = temp;
+        temp = findParent(temp);
+    }
+    return temp;
+}
+
+Node *BinaryTree::findParent(Node *node) {
+    if (node == root) {
+        throw std::out_of_range("Node is the root of the tree");
+    }
+    Iterator *iterator = create_bft_iterator();
+    Node *temp;
+    while (iterator->has_next()) {
+        temp = iterator->next();
+        if (temp->left == node || temp->right == node) {
+            delete iterator;
+            return temp;
+        }
+    }
+    delete iterator;
+    return nullptr;
 }
 
 Iterator *BinaryTree::create_bft_iterator() {
@@ -75,10 +162,10 @@ void BinaryTree::print() {
 
 }
 
-void BinaryTree::destroy(Node *root) {
-    if (root) {
-        destroy(root->left);
-        destroy(root->right);
-        delete root;
+void BinaryTree::destroy(Node *node) {
+    if (node) {
+        destroy(node->left);
+        destroy(node->right);
+        delete node;
     }
 }

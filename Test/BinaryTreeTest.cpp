@@ -49,3 +49,15 @@ TEST_F(BinaryIntTest, insertTest) {
     treeForTest.insert(6);
     ASSERT_EQ(true, treeForTest.contains(6));
 }
+
+TEST_F(BinaryIntTest, removeTest) {
+    treeForTest.remove(76);
+    ASSERT_EQ(false, treeForTest.contains(76));
+
+    treeForTest.remove(70);
+    ASSERT_EQ(false, treeForTest.contains(70));
+    ASSERT_EQ(true, treeForTest.contains(68));
+
+    treeForTest.remove(28);
+    ASSERT_EQ(false, treeForTest.contains(28));
+}
